@@ -23,7 +23,7 @@
 }
 
 html {
-  scroll-behavior: smooth; /* 👈 SCROLL SUAVE */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -205,13 +205,31 @@ p {
   transform: rotate(180deg);
 }
 
-/* ---------- TOUR ---------- */
+/* ---------- TOUR 360 (MEJORADO PARA MÓVIL) ---------- */
 .tour {
   position: relative;
-  padding-top: 56.25%;
-  border-radius: 14px;
+  width: 100%;
+  border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
+  background: #000;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .tour {
+    padding-top: 56.25%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .tour {
+    padding-top: 85vh;
+    margin-left: -28px;
+    margin-right: -28px;
+    border-radius: 0;
+  }
 }
 
 .tour iframe {
@@ -279,7 +297,6 @@ p {
     <h1>AMPLIO Y BONITO DEPARTAMENTO EN ALQUILER – ZONA SARCOBAMBA</h1>
     <div class="price">Bs. 3.350 (Incluye expensas)</div>
 
-    <!-- BADGES + BOTÓN TOUR -->
     <div class="badge-row">
       <div class="badges">
         <div class="badge">🛏 2 Habitaciones</div>
@@ -287,7 +304,6 @@ p {
         <div class="badge">🚗 1 Garaje</div>
         <div class="badge">📐 85 m²</div>
       </div>
-
       <a href="#tour360" class="btn-tour">🎥 Ver Tour 360°</a>
     </div>
 
