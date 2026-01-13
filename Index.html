@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Inmuebles</title>
+
+<style>
+:root {
+  --primary: #2563eb;
+  --secondary: #16a34a;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+.header h1 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.header p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* ---------- BUSCADOR ---------- */
+.search-box {
+  max-width: 1200px;
+  margin: 10px auto 20px;
+  padding: 0 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+}
+
+/* ---------- FILTROS ---------- */
+.filters {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.filters select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* ---------- BOTÓN LIMPIAR ---------- */
+.clear-btn {
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+  transition: background 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #e2e8f0;
+}
+
+/* ---------- GRID ---------- */
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-price {
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 6px 0;
+}
+
+.card-location {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card-features {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background: #eff6ff;
+  color: var(--primary);
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Encuentra tu próximo hogar</h1>
+  <p>Departamentos y espacios disponibles con recorridos virtuales 360°</p>
+</div>
+
+<!-- BUSCADOR -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Buscar por zona, precio, habitaciones...">
+</div>
+
+<!-- FILTROS -->
+<div class="filters">
+  <select id="filterZone">
+    <option value="">Zona</option>
+    <option value="norte">Zona Norte</option>
+    <option value="queru">Queru Queru</option>
+  </select>
+
+  <select id="filterRooms">
+    <option value="">Habitaciones</option>
+    <option value="1">1+</option>
+    <option value="2">2+</option>
+    <option value="3">3+</option>
+  </select>
+
+  <select id="filterPrice">
+    <option value="">Precio máximo</option>
+    <option value="3000">Bs. 3.000</option>
+    <option value="4000">Bs. 4.000</option>
+    <option value="5000">Bs. 5.000</option>
+  </select>
+
+  <!-- BOTÓN LIMPIAR -->
+  <button class="clear-btn" onclick="resetFilters()">Limpiar filtros</button>
+</div>
+
+<!-- CATÁLOGO -->
+<div class="catalog" id="catalog">
+
+  <a href="airbnb1.html" class="card"
+     data-zone="norte" data-rooms="2" data-price="3350">
+    <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room1.jpg">
+    <div class="card-content">
+      <div class="card-price">Bs. 3.350</div>
+      <div class="card-title">Departamento Sarcobamba</div>
+      <div class="card-location">Cochabamba · Zona Norte</div>
+      <div class="card-features">
+        <span class="feature">🛏 2</span>
+        <span class="feature">🛁 2</span>
+        <span class="feature">🚗 1</span>
+        <span class="feature">📐 85 m²</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="airbnb2.html" class="card"
+     data-zone="queru" data-rooms="3" data-price="4200">
+    <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room4.jpg">
+    <div class="card-content">
+      <div class="card-price">Bs. 4.200</div>
+      <div class="card-title">Departamento Queru Queru</div>
+      <div class="card-location">Cochabamba · Queru Queru</div>
+      <div class="card-features">
+        <span class="feature">🛏 3</span>
+        <span class="feature">🛁 2</span>
+        <span class="feature">🚗 1</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="airbnb1.html" class="card"
+     data-zone="norte" data-rooms="2" data-price="3350">
+    <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room2.jpg">
+    <div class="card-content">
+      <div class="card-price">Bs. 3.350</div>
+      <div class="card-title">Departamento Sarcobamba</div>
+      <div class="card-location">Cochabamba · Zona Norte</div>
+      <div class="card-features">
+        <span class="feature">🛏 2</span>
+        <span class="feature">🛁 2</span>
+        <span class="feature">🚗 1</span>
+        <span class="feature">📐 85 m²</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<script>
+const filters = document.querySelectorAll('.filters select');
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.card');
+
+filters.forEach(f => f.addEventListener('change', applyFilters));
+searchInput.addEventListener('input', applyFilters);
+
+function applyFilters() {
+  const zone = document.getElementById('filterZone').value;
+  const rooms = document.getElementById('filterRooms').value;
+  const price = document.getElementById('filterPrice').value;
+  const search = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    const matchSearch = !search || text.includes(search);
+    const matchZone = !zone || card.dataset.zone === zone;
+    const matchRooms = !rooms || card.dataset.rooms >= rooms;
+    const matchPrice = !price || card.dataset.price <= price;
+
+    card.style.display =
+      matchSearch && matchZone && matchRooms && matchPrice
+        ? 'block'
+        : 'none';
+  });
+}
+
+/* ---------- RESET ---------- */
+function resetFilters() {
+  document.getElementById('filterZone').value = "";
+  document.getElementById('filterRooms').value = "";
+  document.getElementById('filterPrice').value = "";
+  searchInput.value = "";
+
+  cards.forEach(card => {
+    card.style.display = 'block';
+  });
+}
+</script>
+
+</body>
+</html>
