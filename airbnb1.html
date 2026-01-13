@@ -22,9 +22,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -55,16 +53,13 @@ body {
   display: none;
 }
 
-.carousel img.active {
-  display: block;
-}
+.carousel img.active { display: block; }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255,255,255,0.85);
-  color: var(--text);
   border-radius: 50%;
   width: 42px;
   height: 42px;
@@ -76,13 +71,10 @@ body {
 .next { right: 15px; }
 
 /* ---------- CONTENIDO ---------- */
-.content {
-  padding: 28px;
-}
+.content { padding: 28px; }
 
 h1 {
   font-size: 28px;
-  font-weight: 700;
   margin-bottom: 10px;
 }
 
@@ -93,10 +85,9 @@ h1 {
   margin-bottom: 14px;
 }
 
-/* ---------- BADGES + BOTÓN ---------- */
+/* ---------- BADGES ---------- */
 .badge-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
@@ -123,26 +114,16 @@ h1 {
   padding: 10px 16px;
   background: var(--accent);
   color: #0f172a;
-  font-weight: 600;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 14px;
-  white-space: nowrap;
-  transition: background 0.2s ease;
-}
-
-.btn-tour:hover {
-  background: #0ea5e9;
+  font-weight: 600;
 }
 
 /* ---------- SECCIONES ---------- */
-.section {
-  margin-top: 32px;
-}
+.section { margin-top: 32px; }
 
 .section h2 {
   font-size: 20px;
-  margin-bottom: 10px;
 }
 
 .section h2::after {
@@ -151,8 +132,8 @@ h1 {
   width: 50px;
   height: 3px;
   background: var(--primary);
-  border-radius: 10px;
   margin-top: 6px;
+  border-radius: 10px;
 }
 
 p {
@@ -182,52 +163,43 @@ p {
   align-items: center;
 }
 
-.accordion-header:hover {
-  background: #e0f2fe;
-}
+.accordion-header:hover { background: #e0f2fe; }
 
 .accordion-icon {
-  color: var(--primary);
   transition: transform 0.25s ease;
+  color: var(--primary);
 }
 
 .accordion-content {
   display: none;
   padding: 16px 20px;
-  background: white;
+  background: #fff;
 }
 
-.accordion-item.active .accordion-content {
-  display: block;
-}
+.accordion-item.active .accordion-content { display: block; }
+.accordion-item.active .accordion-icon { transform: rotate(180deg); }
 
-.accordion-item.active .accordion-icon {
-  transform: rotate(180deg);
-}
-
-/* ---------- TOUR 360 (MEJORADO PARA MÓVIL) ---------- */
+/* ---------- TOUR 360 (CENTRADO MÓVIL) ---------- */
 .tour {
   position: relative;
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--border);
   background: #000;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
 }
 
 /* Desktop */
 @media (min-width: 768px) {
-  .tour {
-    padding-top: 56.25%;
-  }
+  .tour { padding-top: 56.25%; }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
   .tour {
-    padding-top: 85vh;
-    margin-left: -28px;
-    margin-right: -28px;
+    height: 85vh;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 0;
   }
 }
@@ -252,27 +224,14 @@ p {
   border-radius: 10px;
 }
 
-.btn:hover {
-  background: #1d4ed8;
-}
-
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-  .badge-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .btn-tour {
-    width: 100%;
-    text-align: center;
-  }
+  .badge-row { flex-direction: column; }
+  .btn-tour { width: 100%; text-align: center; }
 }
 
 @media (min-width: 768px) {
-  .carousel img {
-    height: 420px;
-  }
+  .carousel img { height: 420px; }
 }
 </style>
 </head>
@@ -287,7 +246,6 @@ p {
     <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room2.jpg">
     <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room3.jpg">
     <img src="https://pub-e446fa7d6f4146619d7ce2af85b58ac4.r2.dev/RoomTest/room4.jpg">
-
     <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
     <button class="carousel-btn next" onclick="nextSlide()">❯</button>
   </div>
@@ -316,7 +274,7 @@ p {
       <h2>ℹ️ Descripción</h2>
       <p>
         Departamento amplio y moderno, ideal para familias o alquiler prolongado.
-        Excelente iluminación natural y ubicación estratégica.
+        Excelente iluminación natural, buena ventilación y ubicación estratégica.
       </p>
     </div>
 
@@ -356,13 +314,11 @@ p {
     <div class="section" id="tour360">
       <h2>🌐 Tour Virtual 360</h2>
       <div class="tour">
-        <iframe src="https://kuula.co/share/collection/7HVbN?logo=1&info=1&fs=1"></iframe>
+        <iframe src="https://kuula.co/share/htYtL/collection/7HVbN?logo=1&info=1&fs=1&gyro=0"></iframe>
       </div>
     </div>
 
-    <a href="https://wa.me/591XXXXXXXX" class="btn">
-      📞 Contactar por WhatsApp
-    </a>
+    <a href="https://wa.me/591XXXXXXXX" class="btn">📞 Contactar por WhatsApp</a>
 
   </div>
 </div>
@@ -372,7 +328,7 @@ let index = 0;
 const slides = document.querySelectorAll('.carousel img');
 
 function showSlide(i) {
-  slides.forEach(slide => slide.classList.remove('active'));
+  slides.forEach(s => s.classList.remove('active'));
   slides[i].classList.add('active');
 }
 
